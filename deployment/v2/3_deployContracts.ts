@@ -494,6 +494,9 @@ async function main() {
     console.log("pendingStateTimeout:", await polygonRollupManagerContract.pendingStateTimeout());
     console.log("trustedAggregatorTimeout:", await polygonRollupManagerContract.trustedAggregatorTimeout());
 
+    // Add DEFAULT_ADMIN_ROLE to deployer
+    await polygonRollupManagerContract.grantRole(DEFAULT_ADMIN_ROLE, deployer.address);
+    
     // Check roles
     expect(await polygonRollupManagerContract.hasRole(DEFAULT_ADMIN_ROLE, timelockAddressRollupManager)).to.be.equal(
         true
